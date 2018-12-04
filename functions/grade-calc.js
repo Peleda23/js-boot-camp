@@ -1,5 +1,5 @@
-let studentScoreCalc = function(score, total = 20){
-  let points = (score / total) * 100;
+const studentScoreCalc = function(score, total = 20){
+  const points = (score / total) * 100;
   let letterGrade = " ";
  
   if (points >= 90) {
@@ -16,5 +16,5 @@ let studentScoreCalc = function(score, total = 20){
   return `You got a ${letterGrade} (${points}%)!`;
 };
 
-let result = studentScoreCalc(13);
+const result = studentScoreCalc(13);
 console.log(result);
