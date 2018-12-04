@@ -10,3 +10,9 @@ todos.forEach(function(item, index){
   const num = index + 1;
   console.log(`${num}. ${item}.`);
 });
+
+console.log('----------');
+
+for(let foo = 0; foo < todos.length; foo++){
+  console.log(`${foo + 1}. ${todos[foo]}.`);
+}
