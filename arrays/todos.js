@@ -1,18 +1,26 @@
-const todos = ['Make breakfast', 'Walk the dog', 'Go to work', 'Learn javascript', 'Meditate'];
+const todos = [{
+  text: 'Learn JavaScript',
+  completed: false
+}, {
+  text: 'Find new job',
+  completed: false
+}, {
+  text: 'Walk the dog',
+  completed: true
+}, {
+  text: 'Meditate',
+  completed: true
+}];
 
-todos.splice(2, 1);
-todos.push("New todo in the end!");
-todos.shift();
+const findTodo = function(todos, todosText){
+  return todos.find(function(todo, index){
+    console.log(index);
+    return todo.text.toLowerCase() === todosText.toLowerCase();
+  });
+  
+  
+};
 
-console.log(`You have ${todos.length} todos! `);
-
-todos.forEach(function(item, index){
-  const num = index + 1;
-  console.log(`${num}. ${item}.`);
-});
-
-console.log('----------');
-
-for(let foo = 0; foo < todos.length; foo++){
-  console.log(`${foo + 1}. ${todos[foo]}.`);
-}
+const todo = findTodo(todos, 'find new job');
+console.log(todo);
+console.log(todos);
