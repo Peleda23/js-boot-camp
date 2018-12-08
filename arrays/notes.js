@@ -15,6 +15,7 @@ const findNote = function(notes, noteTitle){
     });
 };
 
+
 // const findNote = function(notes, noteTitle){
 //   const index = notes.findIndex(function(note, index){
 //       return note.title.toLowerCase() === noteTitle.toLowerCase();
@@ -24,5 +25,5 @@ const findNote = function(notes, noteTitle){
 
 const note = findNote(notes, 'Office modifications');
 console.log(note);
-// test
+
 

@@ -1,25 +1,28 @@
 const todos = [{
-  text: 'Learn JavaScript',
-  completed: false
-}, {
-  text: 'Find new job',
-  completed: false
-}, {
-  text: 'Walk the dog',
+  text: 'Order cat food',
   completed: true
 }, {
-  text: 'Meditate',
+  text: 'Clean kitchen',
+  completed: false
+}, {
+  text: 'Buy food',
+  completed: true
+}, {
+  text: 'Do work',
+  completed: false
+}, {
+  text: 'Exercise',
   completed: true
 }];
 
-const findTodo = function(todos, todosText){
-  return todos.find(function(todo, index){
-    
-    return todo.text.toLowerCase() === todosText.toLowerCase();
+const deleTodo = function(todos, todoText){
+  const index = todos.findIndex(function(todo){
+    return todo.text.toLowerCase() === todoText.toLowerCase();
   });
+  if(index > -1){
+    todos.splice(index, 1);
+  }
 };
 
-const todo = findTodo(todos, 'find new job');
-console.log(todo);
+deleTodo(todos, '!!buy food');
 console.log(todos);
-console.log(todo);
