@@ -1,11 +1,39 @@
-const p = document.querySelectorAll('p');
-console.log(p);
-p.forEach(function(p){
-   const findTodo = function(para, todos){
-       return para.find(function(todo){
-           return todo.toLowerCase === todos;
-       });
-   };
-   findTodo(p, 'the');
-   console.log(p);
+const todos = [{
+        text: 'Order cat food',
+        completed: true
+    }, {
+        text: 'Clean kitchen',
+        completed: false
+    }, {
+        text: 'Buy food',
+        completed: true
+    }, {
+        text: 'Do work',
+        completed: false
+    }, {
+        text: 'Exercise',
+        completed: true
+    }];
+
+const incompleteTodos = todos.filter(function(todo){
+    return !todo.completed;
 });
+
+const summary = document.createElement('h2');
+summary.textContent = `You have ${incompleteTodos.length} todos left`;
+document.querySelector('body').appendChild(summary);
+
+todos.forEach(function(todo){
+    const p = document.createElement('p');
+    p.textContent = todo.text;
+    document.querySelector('body').appendChild(p);
+});
+
+
+// const paragraphs = document.querySelectorAll('p');
+
+// paragraphs.forEach(function(paragraph){
+//     if(paragraph.textContent.includes('the')){
+//         paragraph.remove();
+//     }
+// }); 
