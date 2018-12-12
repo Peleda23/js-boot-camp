@@ -8,23 +8,11 @@ const notes = [{
     title: 'Office modifications',
     body: 'Get new seat'
   }];
-// query and remove
 
-// const p = document.querySelector('p');
-// p.remove();
+  document.querySelector('button').addEventListener('click', function(e){
+    e.target.textContent = 'The button was clicked';
+  });
 
-// query all and removes
-
-const ps = document.querySelectorAll('p');
-ps.forEach(function(p){
-    // console.log(p.textContent);
-    p.textContent = '*************';
-});
-
-// Create new element
-
-const newParagraph = document.createElement('p');
-newParagraph.textContent = 'This is new element from JavaScript!!!';
-
-// Append new paragraph to the page
-document.querySelector('body').appendChild(newParagraph);
+  document.querySelectorAll('button')[1].addEventListener('click', function(){
+    console.log('Button was clicked');
+  });

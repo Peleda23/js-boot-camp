@@ -15,6 +15,9 @@ const todos = [{
         completed: true
     }];
 
+
+
+
 const incompleteTodos = todos.filter(function(todo){
     return !todo.completed;
 });
@@ -29,11 +32,8 @@ todos.forEach(function(todo){
     document.querySelector('body').appendChild(p);
 });
 
+// Listen for new todo creation.
 
-// const paragraphs = document.querySelectorAll('p');
-
-// paragraphs.forEach(function(paragraph){
-//     if(paragraph.textContent.includes('the')){
-//         paragraph.remove();
-//     }
-// }); 
+document.querySelector('button').addEventListener('click', function(e){
+    console.log('my message');
+});    
