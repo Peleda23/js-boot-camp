@@ -15,11 +15,13 @@ const todos = [{
         completed: true
     }];
 
+
 // * Filtruoto teksto objektas.
 
 const filters = {
     searchText: ''
 };
+
 
 // * Tikrina filters objekto ir esamo todos objekto zodzius.
 const renderTodos = function(todos, filters) {
@@ -48,6 +50,7 @@ const renderTodos = function(todos, filters) {
     });
 };
 
+
 // * Iskvieca funkcija kad parasytu esamus todo.
 renderTodos(todos, filters);
 
@@ -60,4 +63,14 @@ document.querySelector('#search-text').addEventListener('input', function(e){
 
     // * Iskviecia funkcija kai buna panaudotas inputas. 
     renderTodos(todos, filters);
+});
+
+document.querySelector('#form').addEventListener('submit', function(e){
+    e.preventDefault();
+    todos.push({
+        text: e.target.elements.text.value,
+        completed: false
+    });
+    renderTodos(todos, filters);
+    e.target.elements.text.value = '';
 });
