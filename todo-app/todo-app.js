@@ -1,20 +1,4 @@
-const todos = [{
-        text: 'Order cat food',
-        completed: true
-    }, {
-        text: 'Clean kitchen',
-        completed: false
-    }, {
-        text: 'Buy food',
-        completed: true
-    }, {
-        text: 'Do work',
-        completed: false
-    }, {
-        text: 'Exercise',
-        completed: true
-    }];
-
+let todos = [];
 
 //  Filtruoto teksto objektas.
 
@@ -23,6 +7,11 @@ const filters = {
     hideCompleted: false
 };
 
+const todoJSON = localStorage.getItem('todos');
+
+if(todoJSON !== null){
+    todos = JSON.parse(todoJSON);
+}
 
 //  Tikrina filters objekto ir esamo todos objekto zodzius.
 const renderTodos = function(todos, filters) {
@@ -48,7 +37,14 @@ const renderTodos = function(todos, filters) {
     //  Daro loopa per esama objekta ir iskelia visus todo i teksta p pagrindu.
     filteredTodos.forEach(function(todo){
         const p = document.createElement('p');
-        p.textContent = todo.text;
+
+        if(todo.text.length > 0) {
+            p.textContent = todo.text;
+        } else {
+            p.textContent = 'Unnamed Todo';
+        }
+
+        
         document.querySelector('#todos').appendChild(p);
     });
 };
@@ -74,6 +70,7 @@ document.querySelector('#form').addEventListener('submit', function(e){
         text: e.target.elements.text.value,
         completed: false
     });
+    localStorage.setItem('todos', JSON.stringify(todos));
     renderTodos(todos, filters);
     e.target.elements.text.value = '';
 });
