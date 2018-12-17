@@ -8,8 +8,31 @@ const getSavedTodos = function() {
     }
 };
 
+// Funkcija kuri isaugo i localstorage info.
 const saveTodos = function(todos) {
     localStorage.setItem('todos', JSON.stringify(todos));
+};
+
+// Mygtukas kuris istrina norima eilute.
+const removeTodo = function (id) {
+    const todoIndex = todos.findIndex(function (todo) {
+        return todo.id == id;
+    });
+
+    if (todoIndex > -1) {
+        todos.splice(todoIndex, 1);
+    }
+};
+
+// Chekboxas ijungia ir isjungia padarytus todo.
+const toggleTodo = function (id) {
+    const todo = todos.find(function (todo) {
+        return todo.id === id;
+    });
+
+    if (todo !== undefined) {
+        todo.completed = !todo.completed;
+    }
 };
 
 const renderTodos = function(todos, filters) {
@@ -47,7 +70,14 @@ const generateTodoDOM = function(todo) {
     
     // Sutvarkom input, kad butu checkboxas.
     checkbox.setAttribute('type', 'checkbox');
+    checkbox.checked = todo.completed; 
     todoEl.appendChild(checkbox);
+    checkbox.addEventListener('change', function () {
+        toggleTodo(todo.id);
+        saveTodos(todos);
+        renderTodos(todos, filters);
+    });
+    
 
     // Parasom ir iskeliam todo antraste.
     todoText.textContent = todo.text;
@@ -56,6 +86,11 @@ const generateTodoDOM = function(todo) {
     // Duodam pavadinima ir iskeliam mygtuka.
     removeButton.textContent = 'x';
     todoEl.appendChild(removeButton);
+    removeButton.addEventListener('click', function() {
+        removeTodo(todo.id);
+        saveTodos(todos);
+        renderTodos(todos, filters);
+    });
 
     return todoEl;
 };

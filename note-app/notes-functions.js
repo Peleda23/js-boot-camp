@@ -14,6 +14,16 @@ const saveNotes =  function(notes) {
     localStorage.setItem('notes', JSON.stringify(notes));
 };
 
+// Istrinam zinute is saraso.
+const removeNote = function (id) {
+    const noteIndex = notes.findIndex(function (note) {
+        return note.id == id;
+    });
+
+    if (noteIndex > -1) {
+        notes.splice(noteIndex, 1);
+    }
+};
 
 // Sukuria norimus elementus puslapyje.
 const generateNoteDOM = function(note)  {
@@ -24,6 +34,11 @@ const generateNoteDOM = function(note)  {
     // Sukuriamas istrinimo mygtuko tekstas.
     button.textContent = 'x';
     noteEl.appendChild(button);
+    button.addEventListener('click', function(){
+        removeNote(note.id);
+        saveNotes(notes);
+        renderNotes(notes, filters);
+    });
 
     // Sukuriamas zinutes pavadinimo tekstas.
     if(note.title.length > 0) {
