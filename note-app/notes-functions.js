@@ -15,16 +15,24 @@ const saveNotes =  function(notes) {
 };
 
 
-// Generuoja sarasa esamu zinuciu puslapyje.
+// Sukuria norimus elementus puslapyje.
 const generateNoteDOM = function(note)  {
-    const noteEl = document.createElement('p');
+    const noteEl = document.createElement('div');
+    const textEl = document.createElement('span');
+    const button = document.createElement('button');
 
+    // Sukuriamas istrinimo mygtuko tekstas.
+    button.textContent = 'x';
+    noteEl.appendChild(button);
+
+    // Sukuriamas zinutes pavadinimo tekstas.
     if(note.title.length > 0) {
-        noteEl.textContent = note.title;
+        textEl.textContent = note.title;
     } else {
-        noteEl.textContent = 'Unnamed note';
+        textEl.textContent = 'Unnamed note';
     }
 
+    noteEl.appendChild(textEl);
     return noteEl;
 };
 

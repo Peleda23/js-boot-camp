@@ -23,7 +23,9 @@ const renderTodos = function(todos, filters) {
     const incompleteTodos = filteredTodos.filter(function(todo){
         return !todo.completed;
     });
+
     
+
     //  Isvalo lauka kad nesikratotu vienoda info.
     document.querySelector('#todos').innerHTML = '';
 
@@ -38,9 +40,24 @@ const renderTodos = function(todos, filters) {
 
 // Get the DOM elements for an individual note.
 const generateTodoDOM = function(todo) {
-    const p = document.createElement('p');
-    p.textContent = todo.text; 
-    return p;
+    const todoEl = document.createElement('div');
+    const checkbox = document.createElement('input');
+    const todoText = document.createElement('span');
+    const removeButton = document.createElement('button');
+    
+    // Sutvarkom input, kad butu checkboxas.
+    checkbox.setAttribute('type', 'checkbox');
+    todoEl.appendChild(checkbox);
+
+    // Parasom ir iskeliam todo antraste.
+    todoText.textContent = todo.text;
+    todoEl.appendChild(todoText);
+
+    // Duodam pavadinima ir iskeliam mygtuka.
+    removeButton.textContent = 'x';
+    todoEl.appendChild(removeButton);
+
+    return todoEl;
 };
 
 // Get the DOM elements for list summary.
