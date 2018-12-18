@@ -24,6 +24,7 @@ const removeTodo = function (id) {
     }
 };
 
+// JavaScript is hard. 
 // Chekboxas ijungia ir isjungia padarytus todo.
 const toggleTodo = function (id) {
     const todo = todos.find(function (todo) {
