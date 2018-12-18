@@ -28,7 +28,7 @@ const removeNote = function (id) {
 // Sukuria norimus elementus puslapyje.
 const generateNoteDOM = function(note)  {
     const noteEl = document.createElement('div');
-    const textEl = document.createElement('span');
+    const textEl = document.createElement('a');
     const button = document.createElement('button');
 
     // Sukuriamas istrinimo mygtuko tekstas.
@@ -47,6 +47,8 @@ const generateNoteDOM = function(note)  {
         textEl.textContent = 'Unnamed note';
     }
 
+    // Nustatom a elemnto linka i kita puslapi.
+    textEl.setAttribute('href', `/edit.html#${note.id}`);
     noteEl.appendChild(textEl);
     return noteEl;
 };

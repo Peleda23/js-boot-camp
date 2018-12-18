@@ -7,13 +7,19 @@ const notes = getSavedNotes();
   renderNotes(notes, filters);
 
   document.querySelector('#create-note').addEventListener('click', function(e){
+    
+    const id = uuidv4();
+
     notes.push({
-      id: uuidv4(),
+      id: id,
       title: '',
       body: ''
     });
+    
     saveNotes(notes);
-    renderNotes(notes, filters);
+
+    // Mygtukas padaromas kaip linkas kuris nukreipia i kita puslapi.
+    location.assign(`/edit.html#${id}`);
   });
 
 
