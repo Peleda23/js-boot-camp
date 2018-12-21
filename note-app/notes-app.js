@@ -38,3 +38,6 @@ let notes = getSavedNotes();
       renderNotes(notes, filters);
     }
   });
+
+  const now = moment();
+  console.log(now.toString());
