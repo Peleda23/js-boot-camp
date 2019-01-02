@@ -10,14 +10,14 @@ const filters = {
 renderTodos(todos, filters);
 
 //  Surenka parasytus zodzius ir sukelia i filters objekta.
-document.querySelector('#search-text').addEventListener('input', function(e){
+document.querySelector('#search-text').addEventListener('input',(e) => {
     filters.searchText = e.target.value;
 
     // Iskviecia funkcija kai buna panaudotas inputas. 
     renderTodos(todos, filters);
 });
 
-document.querySelector('#form').addEventListener('submit', function(e){
+document.querySelector('#form').addEventListener('submit',(e) => {
     e.preventDefault();
     todos.push({
         id: uuidv4(),
@@ -30,7 +30,7 @@ document.querySelector('#form').addEventListener('submit', function(e){
 });
 
 // Pajungiam checkboxa.
-document.querySelector('#hide-completed').addEventListener('change', function(e){
+document.querySelector('#hide-completed').addEventListener('change',(e) => {
     filters.hideCompleted = e.target.checked;
     renderTodos(todos, filters);
 });
