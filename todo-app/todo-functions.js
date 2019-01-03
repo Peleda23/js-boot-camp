@@ -1,6 +1,6 @@
 const getSavedTodos = () => {
     const todoJSON = localStorage.getItem('todos');
-    return todoJSON !== null ? JSON.parse(todoJSON) : [];
+    return todoJSON ? JSON.parse(todoJSON) : [];
 };
 
 // Funkcija kuri isaugo i localstorage info.
@@ -22,7 +22,7 @@ const removeTodo = (id) => {
 const toggleTodo = (id) => {
     const todo = todos.find((todo) => todo.id === id);
 
-    if (todo !== undefined) {
+    if (todo) {
         todo.completed = !todo.completed;
     }
 };
