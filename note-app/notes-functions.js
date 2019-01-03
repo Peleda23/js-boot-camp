@@ -1,12 +1,7 @@
 // Skaito esamas zinutes is localStorage. 
 const getSavedNotes = () => {
     const noteJSON = localStorage.getItem('notes');
-    
-    if(noteJSON !== null){
-    return JSON.parse(noteJSON);
-    } else {
-        return [];
-    }
+    return noteJSON !== null ? JSON.parse(noteJSON) : [];
 };
 
 // Issaugoti info i localstorge.
