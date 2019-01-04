@@ -1,14 +1,18 @@
-const studentScoreCalc = function(score, total = 20){
+const studentScoreCalc = function (score, total = 20) {
+  if (typeof score !== 'number' || typeof total !== 'number') {
+    throw Error('Argument is not a number');
+  };
+
   const points = (score / total) * 100;
   let letterGrade = " ";
- 
+
   if (points >= 90) {
     letterGrade = "A";
-  } else if (points >= 80){
+  } else if (points >= 80) {
     letterGrade = "B";
-  } else if (points >= 70){
+  } else if (points >= 70) {
     letterGrade = "C";
-  } else if (points >= 60){
+  } else if (points >= 60) {
     letterGrade = "D";
   } else {
     letterGrade = "F";
@@ -16,5 +20,11 @@ const studentScoreCalc = function(score, total = 20){
   return `You got a ${letterGrade} (${points}%)!`;
 };
 
-const result = studentScoreCalc(13);
-console.log(result);
+
+
+try {
+  const result = studentScoreCalc('num  ');
+  console.log(result);
+} catch (e) {
+  console.log(e.message);
+}
