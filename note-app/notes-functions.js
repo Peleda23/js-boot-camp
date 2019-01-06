@@ -1,7 +1,14 @@
+"use strict";
+
 // Skaito esamas zinutes is localStorage. 
 const getSavedNotes = () => {
     const noteJSON = localStorage.getItem('notes');
-    return noteJSON ? JSON.parse(noteJSON) : [];
+
+    try {
+        return noteJSON ? JSON.parse(noteJSON) : [];
+    } catch (e) {
+        return [];
+    }
 };
 
 // Issaugoti info i localstorge.
@@ -11,7 +18,7 @@ const saveNotes = (notes) => {
 
 // Istrinam zinute is saraso.
 const removeNote = (id) => {
-    const noteIndex = notes.findIndex( (note) => note.id == id);
+    const noteIndex = notes.findIndex((note) => note.id == id);
 
     if (noteIndex > -1) {
         notes.splice(noteIndex, 1);
@@ -34,7 +41,7 @@ const generateNoteDOM = (note) => {
     });
 
     // Sukuriamas zinutes pavadinimo tekstas.
-    if(note.title.length > 0) {
+    if (note.title.length > 0) {
         textEl.textContent = note.title;
     } else {
         textEl.textContent = 'Unnamed note';
@@ -93,8 +100,8 @@ const renderNotes = (notes, filters) => {
 
     //  Funkcija isfiltruotas zinutes iskelia i ekrana.
     filteredNotes.forEach((note) => {
-    const noteEl = generateNoteDOM(note);
-    document.querySelector('#notes').appendChild(noteEl);
+        const noteEl = generateNoteDOM(note);
+        document.querySelector('#notes').appendChild(noteEl);
     });
 };
 

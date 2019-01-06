@@ -1,6 +1,13 @@
+"use strict";
+
 const getSavedTodos = () => {
     const todoJSON = localStorage.getItem('todos');
-    return todoJSON ? JSON.parse(todoJSON) : [];
+
+    try {
+        return todoJSON ? JSON.parse(todoJSON) : [];
+    } catch (e) {
+        return [];
+    }
 };
 
 // Funkcija kuri isaugo i localstorage info.
@@ -37,14 +44,14 @@ const renderTodos = (todos, filters) => {
     //  filtruoja nepadarytus todo.
     const incompleteTodos = filteredTodos.filter((todo) => !todo.completed);
 
-    
+
 
     //  Isvalo lauka kad nesikratotu vienoda info.
     document.querySelector('#todos').innerHTML = '';
 
     //  Pateikia esamu nepadarytu todo skaiciu.
     document.querySelector('#todos').appendChild(generateSummaryDOM(incompleteTodos));
-    
+
     //  Daro loopa per esama objekta ir iskelia visus todo i teksta p pagrindu.
     filteredTodos.forEach((todo) => {
         document.querySelector('#todos').appendChild(generateTodoDOM(todo));
@@ -57,17 +64,17 @@ const generateTodoDOM = (todo) => {
     const checkbox = document.createElement('input');
     const todoText = document.createElement('span');
     const removeButton = document.createElement('button');
-    
+
     // Sutvarkom input, kad butu checkboxas.
     checkbox.setAttribute('type', 'checkbox');
-    checkbox.checked = todo.completed; 
+    checkbox.checked = todo.completed;
     todoEl.appendChild(checkbox);
-    checkbox.addEventListener('change',() => {
+    checkbox.addEventListener('change', () => {
         toggleTodo(todo.id);
         saveTodos(todos);
         renderTodos(todos, filters);
     });
-    
+
 
     // Parasom ir iskeliam todo antraste.
     todoText.textContent = todo.text;
@@ -76,7 +83,7 @@ const generateTodoDOM = (todo) => {
     // Duodam pavadinima ir iskeliam mygtuka.
     removeButton.textContent = 'x';
     todoEl.appendChild(removeButton);
-    removeButton.addEventListener('click',() => {
+    removeButton.addEventListener('click', () => {
         removeTodo(todo.id);
         saveTodos(todos);
         renderTodos(todos, filters);

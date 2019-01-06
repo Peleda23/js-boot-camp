@@ -1,7 +1,7 @@
 const studentScoreCalc = function (score, total = 20) {
   if (typeof score !== 'number' || typeof total !== 'number') {
     throw Error('Argument is not a number');
-  };
+  }
 
   const points = (score / total) * 100;
   let letterGrade = " ";
