@@ -1,5 +1,3 @@
-"use strict";
-
 let todos = getSavedTodos();
 
 //  Filtruoto teksto objektas.
