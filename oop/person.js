@@ -20,10 +20,43 @@ class Person {
     }
 }
 
+class Employee extends Person {
+    constructor(firstName, lastName, age, position, like) {
+        super(firstName, lastName, age, like);
+        this.position = position;
+    }
+    getBio() {
+        return `${this.firstName} ${this.lastName} is a ${this.position}.`;
+    }
+    getYearLeft() {
+        return 65 - this.age;
+    }
+}
 
-const me = new Person('Tomas', 'Murinas', 32, ['cooking', 'reading']);
-me.setName('Robinas Hudas');
+class Student extends Person {
+    constructor(firstName, lastName, age, grade, likes) {
+        super(firstName, lastName, age, likes);
+        this.grade = grade;
+    }
+    updateGrade(change) {
+        this.grade += change;
+    }
+    getBio() {
+        const status = this.grade >= 70 ? 'passing' : 'failing';
+        return `${this.firstName} is ${status} a class.`;
+    }
+}
+
+const me = new Student('Tomas', 'Murinas', 33, 86, []);
+console.log(me.getBio());
+me.updateGrade(-20);
 console.log(me.getBio());
 
-const brother = new Person('Tadas', 'Murinas', 35);
-console.log(brother.getBio());
+
+// const me = new Employee('Tomas', 'Murinas', 32, 'programer', ['cooking', 'reading']);
+// me.setName('Robin Hud');
+// console.log(me.getBio());
+// console.log(me.getYearLeft());
+
+// const brother = new Person('Tadas', 'Murinas', 35);
+// console.log(brother.getBio());
