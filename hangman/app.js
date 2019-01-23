@@ -24,3 +24,5 @@ getCountry('LT').then((country) => {
 }, (err) => {
     console.log(`Error: ${err}`);
 });
+
+// working more with promises
